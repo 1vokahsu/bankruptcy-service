@@ -1,0 +1,160 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+
+.navbar-nav .nav-item {
+    margin-right: 4rem;
+}
+
+
+.navbar-nav .nav-item.active {
+    background-color: #f8f9fa;
+}
+
+/* Highlight on hover */
+.navbar-nav .nav-item:hover {
+    background-color: #e9ecef;
+}
+
+
+.body-content {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1;
+}
+
+.footer {
+  background-color: #f8f9fa;
+  padding: 20px 0;
+  text-align: center;
+  width: 100%;
+}
+
+
+html, body{
+    margin-bottom: 0px;
+    padding-top: 20px;
+    height: 100%;
+}
+
+.btn-custom {
+    padding: 15px 25px;
+    background-color: #28a745;
+    border: none;
+    color: white;
+    font-size: 1.5em;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    transition: all 0.2s;
+    display: block;
+    width: 70%;
+    margin: 20px auto;
+    text-decoration: none;
+    text-align: center;
+}
+
+.btn-custom:hover {
+    background-color: #218838;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+.btn-custom2 {
+    padding: 15px 25px;
+    background-color: #28a745;
+    border: none;
+    color: white;
+    font-size: 1.5em;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    transition: all 0.2s;
+    display: block;
+    width: 50%;
+    margin: 20px auto;
+    text-decoration: none;
+}
+
+.btn-custom2:hover {
+    background-color: #218838;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+.lead {
+    font-size: 1.8em;
+    color: #555;
+    text-align: center;
+    margin-bottom: 0.5em;
+}
+
+.lead2 {
+    font-size: 1em;
+    color: #555;
+    text-align: center;
+    margin-bottom: 0.5em;
+}
+
+.subtext {
+    font-size: 1.4em;
+    color: #777;
+    text-align: center;
+    margin-bottom: 0.5em;
+}
+
+.reference {
+    font-size: 1em;
+    color: #999;
+    text-align: center;
+    margin-bottom: 0.5em;
+    font-style: italic;
+}
+
+.subtext2 {
+    font-size: 1.4em;
+    color: #777;
+    margin-bottom: 0.5em;
+}
+
+.reference2 {
+    font-size: 1em;
+    color: #666;
+    margin-bottom: 0.5em;
+}
+
+
+.list-unstyled li::before {
+  content: "•";
+  padding-right: .5rem;
+  color: black;
+  font-weight: bold;
+}
+
+
+.quest-container {
+  display: flex;
+}
+
+.questions {
+  flex: 1;
+}
+
+.tooltips {
+  flex: 1;
+  position: relative;
+}
+
+.tooltip-text {
+  display: none;
+  position: absolute;
+  width: 100%;
+}
+
+.show-tooltip {
+  display: block;
+}

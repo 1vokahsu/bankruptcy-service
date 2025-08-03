@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Вход
+{% endblock %}
+
+{% block body %}
+<h1 class="my-3">Аккаунт</h1>
+<div class="container">
+    {% if user_personal_data %}
+    <p>Имя: {{ user_personal_data.name }}</p>
+    <p>Фамилия: {{ user_personal_data.surname }}</p>
+    <p>Email: {{ user_personal_data.email }}</p>
+    <p>Возраст: {{ user_personal_data.age }}</p>
+    {% else %}
+    <p>Информация о пользователе не найдена</p>
+    {% endif %}
+    <a href="{{ url_for('logout') }}">Выйти</a>
+</div>
+{% endblock %}

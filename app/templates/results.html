@@ -1,0 +1,142 @@
+{% extends 'base.html' %} {% block title %} Результат {% endblock %} {% block
+body %}
+<div class="container text-center mt-5">
+	<h4 class="display-5 fw-bold">Результат</h4>
+</div>
+{% if result == 0 %}
+<div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
+	<h6 class="text-left display-6 fw-6">
+		Вы <strong>ВПРАВЕ</strong> обратиться
+        с <strong>заявлением</strong> о признании банкротом
+        только в <strong>СУД
+	</h6>
+	<h5 class="text-left display subtext2 fw-9">
+		(при доказательстве НЕПЛАТЕЖЕСПОСОБНОСТИ и НЕДОСТАТОЧНОСТИ имущества)
+	</h5>
+</div>
+{% elif result == 1 %}
+<div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
+	<h6 class="text-left display-6 fw-6">
+		Вы <strong>можете</strong> подать заявление в <strong>СУД</strong>, но,
+		скорее всего, Вам <strong>откажут</strong> в удовлетворении требований.
+	</h6>
+	<h5 class="text-left display-6 fw-6">
+		Также Вы имеет право обратиться в МФЦ при соблюдении
+		<a
+			href="https://www.consultant.ru/document/cons_doc_LAW_39331/c48290d39215783e73f0899bb1026b14cb221eff/"
+			>условий</a
+		>.
+	</h5>
+	<h5 class="text-left display-6 subtext2 fw-9">
+		Вы можете претендовать на банкротство в судебном порядке только при
+		доказательстве НЕПЛАТЕЖЕСПОСОБНОСТИ и НЕДОСТАТОЧНОСТИ имущества.
+	</h5>
+</div>
+{% elif result == 2 %}
+<div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
+	<h6 class="text-left display-6 fw-6">
+		Вы <strong>имеете</strong> ПРАВО обратиться либо в <strong>СУД</strong>,
+		либо в <strong>МФЦ</strong>,
+	</h6>
+	<h5 class="text-left display-6 fw-6">
+		по Вашему усмотрению.
+	</h5>
+	<h5 class="text-left display-6 subtext fw-6">
+		(для МФЦ - дописать дополнительные для этого условия из Ст. 223.2)
+	</h5>
+</div>
+{% elif result == 3 %}
+<div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
+	<h6 class="text-left display-6 fw-6">
+		Вы <strong>можете</strong> подать заявление в <strong>СУД</strong>, но,
+		скорее всего, Вам <strong>откажут</strong> в удовлетворении требований.
+	</h6>
+	<h5 class="text-left display-6 subtext2 fw-9">
+		Вы можете претендовать на банкротство в судебном порядке только при
+		доказательстве НЕПЛАТЕЖЕСПОСОБНОСТИ и НЕДОСТАТОЧНОСТИ имущества.
+	</h5>
+</div>
+{% elif result == 4 %}
+<div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
+	<h6 class="text-left display-6 fw-6">
+		Вы <strong>ОБЯЗАНЫ</strong> обратиться в <strong>СУД</strong>.
+	</h6>
+	<h6 class="text-left display-6 fw-6">
+		У Вас есть на это <strong>30 дней</strong>
+	</h6>
+</div>
+<div class="mx-auto my-4">
+	<h5 class="text-center display-9 fw-bold">
+		С какого момента следует считать 30 дней, предоставляемых для обращения в суд, если Вы обязаны обратиться в суд?
+	</h5>
+	<h5 class="text-left">
+		По
+		<a
+			href="https://www.consultant.ru/document/cons_doc_LAW_39331/c2c8c81ee8e4bd843286b08b10607f00ec6ae073/"
+			>закону</a
+		>
+		Гражданин обязан обратиться в арбитражный суд с заявлением о признании его банкротом не позднее 30 рабочих дней со дня, 
+        когда он узнал или должен был узнать о том, что выплата долга одному гражданину (организации) повлечет невозможность выплаты второму. 
+        При этом общий долг превышает 500 тысяч рублей
+	</h5>
+	<h5 class="text-left">
+		ОБРАТИТЕ ВНИМАНИЕ! 
+        Считаются только <strong>рабочие</strong> дни, куда не входят выходные (суббота и воскресенье) и нерабочие праздничные дни. 
+        Учитывайте это при расчете срока.
+	</h5>
+	<h5 class="text-left">
+		Течение срока начинается на следующий день после календарной даты или наступления события, которыми определено начало этого срока. 
+        То есть, если Вы узнали или должны были узнать об обязанности обратиться в суд с заявлением о банкротстве 27 марта, 
+        то 30-дневный срок начинает течь с 28 марта. Таким образом, крайний рабочий день для подачи заявления в суд – 14 мая (см. календарь ниже).
+	</h5>
+    <div class="py-5 text-center">
+      <img  src="img/calendar.png" class="d-block mx-auto mb-4" alt="calendar" width="512" height="404" />
+    </div>
+	<h5 class="text-left">
+        С расчетом Вам поможет специальный сервис 
+		<a
+			href="https://calc.consultant.ru/days"
+			class="link"
+			>«Калькулятор»</a
+		>
+	</h5>
+</div>
+<div class="mx-auto my-4">
+	<h5 class="text-center display-9 fw-bold">
+		Что будет, если не выполнить обязанность и не подать заявление в суд в течение 30 дней?
+	</h5>
+	<h5 class="text-left">
+		За неисполнение гражданином обязанности по подаче заявления о признании его банкротом в арбитражный суд предусмотрена административная ответственность: 
+        налоговые органы имеют право наложить административный штраф в размере от 1000 до 3000 рублей. 
+        Если Вы решите повторно не подать заявление в суд, есть риск получить ещё один штраф – от 3000 до 5000 рублей.
+	</h5>
+</div>
+{% endif %}
+<div class="mx-auto my-4">
+	<h5 class="text-center display-9 fw-bold">
+		В какой суд нужно обращаться с заявлением о признании банкротом?
+	</h5>
+	<h5 class="text-left">
+		По
+		<a
+			href="https://www.consultant.ru/document/cons_doc_LAW_39331/3f616ffff8d276d135382906706bee367d5598ac/"
+			>закону</a
+		>
+		гражданин обращается с заявлением о банкротстве в арбитражный суд по месту
+		жительства – это арбитражный суд Вашего региона (области, республики, края,
+		автономной области, автономного округа, города федерального значения).
+	</h5>
+	<h5 class="text-left">
+		Местом жительства признается место Вашей постоянной регистрации на
+		территории Российской Федерации.
+	</h5>
+	<h5 class="text-left">
+		<a
+			href="https://www.consultant.ru/document/cons_doc_LAW_56549/28d4e27a078fee1402e6da89ff4e0c40edc09d62/"
+			class="link"
+			>Узнать</a
+		>
+		суд, его адрес, сайт и контактный телефон.
+	</h5>
+</div>
+{% endblock %}

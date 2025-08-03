@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+<div class="body-content">
+    <div class="content">
+        <div class='navbar'>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light" style="position: fixed;">
+                <div class="container">
+                    <a class="navbar-brand" href="#">
+                        <img src="logo.png" alt="Your Logo" width="50">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url_for( 'get_index') }}">Главная</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Документы</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url_for('history') }}">История</a>
+                            </li>
+                            <!--                        <li class="nav-item">-->
+                            <!--                            <a class="nav-link" href="#">Форматор</a>-->
+                            <!--                        </li>-->
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url_for('login') }}">Аккаунт</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <div class="container mt-4">
+            {% block body %}
+
+            {% endblock %}
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>Contact us: <a href="mailto:info@example.com">info@example.com</a></p>
+    </footer>
+
+        <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</div>
+</body>
+</html>

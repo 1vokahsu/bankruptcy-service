@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}
+История прохождения анкеты
+{% endblock %}
+
+{% block body %}
+<h1 class="my-3 text-center">История прохождения анкеты</h1>
+<div class="container">
+    {% if 'email' in session %}
+    {% if user_data %}
+        {% for data in user_data %}
+        <div class="card mb-3">
+            <div class="card-header">
+                <strong>Дата прохождения анкеты:</strong> {{ data.time }}
+            </div>
+            <div class="card-body">
+                <strong class="card-title">Ваши ответы:</strong>
+                <ul>
+                    <li>Сумма задолженности: {{ data.questions['Сумма задолженности'] }}</li>
+                    <li>Если Вы отдадите часть долга, у вас не хватит средств для погашения других долгов? {{ data.questions['Удовлетворяет'] }}</li>
+                    <li>Вы отвечаете признакам неплатежеспособности или недостаточности имущества? {{ data.questions['Вы отвечаете'] }}</li>
+                    <li>Соответствуете ли Вы хотя бы одному из данных критериев? {{ data.questions['Соответствуете'] }}</li>
+                </ul>
+                <p class="card-text"><strong>Результат анкеты:</strong> {{ data.result }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>Анкета еще не была пройдена.</p>
+    {% endif %}
+{% else %}
+    <p>Чтобы просматривать историю прохождения анкеты, <a href="{{ url_for('login') }}">необходимо войти в систему</a>!</p>
+{% endif %}
+</div>
+{% endblock %}

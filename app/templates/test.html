@@ -1,0 +1,198 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{% endblock %}
+
+{% block body %}
+
+
+
+<div class="quest-container">
+    <div class="questions">
+        <h1 class="my-3">Анкета</h1>
+            <div class="my-3">
+                <div class="subtext2" style="font-size: 1.6em;">
+                     <a href="{{ url_for('account') }}" style="text-decoration: underline; cursor: pointer; color: inherit;">Зарегистрируйтесь</a>, чтобы сохранить результаты теста
+                </div>
+            </div>
+
+        <form method="POST">
+            <div class="my-3">
+                <div class="subtext2"><span>1. </span>Сумма задолженности</div>
+                <div class="form-check">
+                    <div class="question__input">
+                        <input type="radio" id="qw1-2" name="qw1" value="Менее 25 тысяч рублей"
+                               class="form-check-input"
+                               checked="">
+                        <label class="lead2" for="qw1-2"> <span>Менее 25 тысяч рублей</span></label>
+                    </div>
+                    <div class="question__input">
+                        <input type="radio" id="qw1-4" name="qw1" class="form-check-input"
+                               value="От 25 до 500 тысяч рублей">
+                        <label class="lead2" for="qw1-4"> <span>От 25 до 500 тысяч рублей</span></label>
+                    </div>
+                    <div class="question__input">
+                        <input type="radio" id="qw1-5" name="qw1" class="form-check-input"
+                               value="От 500 тысяч до 1 млн рублей">
+                        <label class="lead2" for="qw1-5"> <span>От 500 тысяч до 1 млн рублей</span></label>
+                    </div>
+                    <div class="question__input">
+                        <input type="radio" id="qw1-6" name="qw1" class="form-check-input"
+                               value="Более 1 млн рублей">
+                        <label class="lead2" for="qw1-6"> <span>Более 1 млн рублей</span></label>
+                    </div>
+                </div>
+                <div class="subtext2"><span>2. </span>Если Вы отдадите часть долга, у вас не хватит средств для
+                    погашения других
+                    долгов?
+                </div>
+                <div class="form-check">
+                    <div class="question__input">
+                        <input type="radio" id="qw2-2" name="qw2" value="Да" class="form-check-input" checked="">
+                        <label class="lead2" for="qw2-2"> <span>Да</span></label>
+                    </div>
+                    <div class="question__input">
+                        <input type="radio" id="qw2-3" name="qw2" class="form-check-input" value="Нет">
+                        <label class="lead2" for="qw2-3"> <span>Нет</span></label>
+                    </div>
+                </div>
+                <!--            <div class="subtext2">-->
+                <!--              <span>3. </span>Вы отвечаете признакам-->
+                <!--              <a href="#" class="tooltip-test tooltip-big" data-toggle="tooltip" data-placement="top" title="Неплатежеспособность - это...">неплатежеспособности</a>-->
+                <!--              или-->
+                <!--              <a href="#" class="tooltip-test" data-toggle="tooltip" data-placement="top" title="Недостаточность имущества - это...">недостаточности имущества</a>?-->
+                <!--            </div>-->
+                <div class="subtext2">
+                    <span>3. </span>Вы отвечаете признакам
+                    <span class="bankruptcy-tooltip" style="text-decoration: underline; cursor: pointer;">неплатежеспособности</span>
+                    или
+                    <span class="insolvency-tooltip" style="text-decoration: underline; cursor: pointer;">недостаточности имущества</span>?
+                </div>
+
+
+                <div class="form-check">
+                    <div class="question__input">
+                        <input type="radio" id="qw3-2" name="qw3" value="Да" class="form-check-input" checked="">
+                        <label class="lead2" for="qw3-2"> <span>Да</span></label>
+                    </div>
+                    <div class="question__input">
+                        <input type="radio" id="qw3-3" name="qw3" class="form-check-input" value="Нет">
+                        <label class="lead2" for="qw3-3"> <span>Нет</span></label>
+                    </div>
+                </div>
+                <div class="subtext2">
+                    <span>4. </span>Соответствуете ли Вы хотя бы одному из данных
+                    <span class="criteria-tooltip"
+                          style="text-decoration: underline; cursor: pointer;">критериев</span>?
+                </div>
+
+
+                <div class="form-check">
+                    <div class="question__input">
+                        <input type="radio" id="qw4-2" name="qw4" value="Да" class="form-check-input" checked="">
+                        <label class="lead2" for="qw4-2"> <span>Да</span></label>
+                    </div>
+                    <div class="question__input">
+                        <input type="radio" id="qw4-3" name="qw4" class="form-check-input" value="Нет">
+                        <label class="lead2" for="qw4-3"> <span>Нет</span></label>
+                    </div>
+                </div>
+
+                <button class="btn-custom2" type="submit" data-toggle="modal" data-target="#exampleModal"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">Результат
+                </button>
+            </div>
+        </form>
+    </div>
+    <div class="tooltips">
+        <div id="bankruptcy-tooltip-text" class="tooltip-text">
+            <p><b><ins>Неплатежеспособность</ins></b> — это неспособность удовлетворить в полном объеме требования по денежным
+                обязательствам и
+                (или) исполнить обязанность по уплате обязательных платежей.</p>
+            <p>Вы считаетесь неплатежеспособным при одном из условий:</p>
+            <ul>
+                <li>Вы не платите долги, срок исполнения по которым уже наступил;</li>
+                <li>Вы больше чем на месяц просрочили оплату более 10% всех своих долгов. Месяц считается со дня,
+                    когда Вы
+                    должны были оплатить долг;
+                </li>
+                <li>Размер Вашего долга больше стоимости Вашего имущества;</li>
+                <li>Вынесено постановление о прекращении исполнительного производства (т.е. прекращено
+                    принудительное взыскание
+                    долга) из-за отсутствия у Вас имущества, которым Вы можете ответить по долгам.
+                </li>
+            </ul>
+            <p><strong>Внимание!</strong> Вы не можете быть признаны неплатежеспособным, если есть основания
+                полагать, что
+                вскоре Вы получите денежное поступление и сможете в полном объеме отдать долги.</p>
+        </div>
+        <div id="insolvency-tooltip-text" class="tooltip-text">
+            <p><b><ins>Недостаточность имущества</ins></b> подразумевает, что размер Вашего долга больше стоимости Вашего
+                имущества.</p>
+        </div>
+        <div id="criteria-tooltip-text" class="tooltip-text">
+            <p><b><ins>Условия для подачи заявления о признании банкротом в МФЦ:</ins></b></p>
+            <p>Вы можете подать заявление в МФЦ, если Вы соответствуете следующим критериям:</p>
+            <ul>
+                <li>Если Вы являетесь гражданином с оконченным исполнительным производством:
+                    <ul>
+                        <li>Законченное исполнительное производство (принудительное взыскание долга) по причине
+                            того, что у вас нет
+                            имущества, которым вы можете отвечать по долгам (п. 4 ч. 1 ст. 46 ФЗ № 229 “Об
+                            исполнительном
+                            производстве”).
+                        </li>
+                        <li>И нет других текущих исполнительных производств.</li>
+                    </ul>
+                </li>
+                <li>Если Вы являетесь пенсионером:
+                    <ul>
+                        <li>Вашим основным доходом является пенсия. Учитываются страховая, государственная,
+                            накопительная, срочная и
+                            другие виды пенсии, в том числе назначаемые бывшим военным, пожарникам, сотрудникам
+                            ФСИН, Росгвардии и
+                            других органов специального назначения.
+                        </li>
+                        <li>И Вы не смогли полностью или частично исполнить исполнительный документ (с момента его
+                            выдачи и до
+                            подачи заявления на банкротство должен пройти ОДИН год минимум).
+                        </li>
+                        <li>И у Вас нет имущества, которым Вы можете отвечать по долгам.</li>
+                    </ul>
+                </li>
+                <li>К имуществу, которым Вы НЕ можете отвечать по долгам, относятся (ст. 446 ГПК РФ): единственное
+                    жилье, в
+                    котором вы и ваша семья может постоянно проживать; земельные участки, на которых расположено
+                    такое жилье;
+                    предметы домашнего обихода; вещи индивидуального пользования, КРОМЕ предметов роскоши и
+                    драгоценностей; и
+                    другие.
+                </li>
+                <li>Если Вы являетесь опекуном или родителем несовершеннолетних детей:
+                    <ul>
+                        <li>Вы являетесь получателем ежемесячного пособия в связи с рождением и воспитанием
+                            ребенка.
+                        </li>
+                        <li>И Вы не смогли полностью или частично исполнить исполнительный документ (с момента его
+                            выдачи и до
+                            подачи заявления на банкротство должен пройти ОДИН год минимум).
+                        </li>
+                        <li>И у Вас нет имущества, которым Вы можете отвечать по долгам (сделать отсылку к условиям
+                            из ст. 446
+                            ГПК).
+                        </li>
+                    </ul>
+                </li>
+                <li>Если Вы должник с длительным взысканием:
+                    <ul>
+                        <li>Вы не смогли полностью или частично исполнить исполнительный документ (с момента его
+                            выдачи и до подачи
+                            заявления на банкротство должно пройти СЕМЬ лет минимум).
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
