@@ -1,4 +1,5 @@
-# Project_kplus
+![logo](app/static/img/logo.png)
+# Bankruptcy-service
 
 A service for determining the possibility of bankruptcy of an individual, taking into account the risks
 and consequences.
