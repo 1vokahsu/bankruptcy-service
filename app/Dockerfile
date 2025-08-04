@@ -8,4 +8,4 @@ EXPOSE 5000
 
 COPY . /app
 
-CMD [ "flask", "--app main", "create_dp" ]
+# CMD [ "flask", "--app main", "create_db" ]

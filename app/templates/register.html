@@ -5,26 +5,42 @@
 {% endblock %}
 
 {% block body %}
-<h1 class="my-3">Регистрация</h1>
 <div class="container">
-    <ul class="breadcrumb">
-        <li><a href="{{ url_for('login') }}">К входу</a></li>
-    </ul>
-    <form method="POST">
-        <label>Имя:</label>
-        <input type="text" name="name" required><br>
-        <label>Фамилия:</label>
-        <input type="text" name="surname" required><br>
-        <label>Email:</label>
-        <input type="email" name="email" required><br>
-        <label>Пароль:</label>
-        <input type="password" name="password" required><br>
-        <label>Возраст:</label>
-        <input type="text" name="age" required><br>
-        <input type="submit" value="Register">
-    </form>
-    {% if message %}
-        <p>{{ message }}</p>
-    {% endif %}
+    <h2 class="my-3 text-center subtext2" style = "color: black">Регистрация</h2>
+    <div style="margin: 0 auto; max-width: 485px;">
+        <div class="bg-light3 p-4 rounded-custom">
+            <p>Уже зарегистрированы? <a href="{{ url_for('login') }}" style="
+									text-decoration: underline;
+									cursor: pointer;
+									color: inherit;
+									font-weight: 650;
+								">Войти</a></p>
+            <form method="POST">
+                <div class="mb-3 d-flex align-items-center">
+                    <div class="flex-grow-1 me-3">
+                        <input type="text" class="form-control" name="name" required placeholder="Имя">
+                    </div>
+                    <div class="flex-grow-1">
+                        <input type="text" class="form-control" name="surname" required placeholder="Фамилия">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <input type="number" class="form-control" name="age" required placeholder="Возраст">
+                </div>
+                <div class="mb-3">
+                    <input type="email" class="form-control" name="email" required placeholder="Электронная почта">
+                </div>
+                <div class="mb-3">
+                    <input type="password" class="form-control" name="password" required placeholder="Пароль">
+                </div>
+                <div class="d-flex justify-content-between">
+                    <button type="submit" class="btn btn-success" style="width: 200px;">Создать аккаунт</button>
+                </div>
+            </form>
+            {% if message %}
+                <p style="margin-bottom: -5px; margin-top: 15px;">{{ message }}</p>
+            {% endif %}
+        </div>
+    </div>
 </div>
 {% endblock %}

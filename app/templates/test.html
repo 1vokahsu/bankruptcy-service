@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
+Анкета
 {% endblock %}
 
 {% block body %}
@@ -9,13 +10,18 @@
 
 <div class="quest-container">
     <div class="questions">
-        <h1 class="my-3">Анкета</h1>
+        <h1 class="subtext2" style="border: 1px solid #e5ffef; background-color: #f7f7f7; border-radius: 8px; font-weight: bold;">
+            Пройдите небольшой тест и
+            узнайте, какой способ
+            банкротства доступен вам
+        </h1>
+        {% if 'email' not in session %}
             <div class="my-3">
                 <div class="subtext2" style="font-size: 1.6em;">
-                     <a href="{{ url_for('account') }}" style="text-decoration: underline; cursor: pointer; color: inherit;">Зарегистрируйтесь</a>, чтобы сохранить результаты теста
+                    <a href="{{ url_for('login') }}" target="_blank" style="text-decoration: underline; cursor: pointer; color: inherit;">Войдите/</a><a href="{{ url_for('register') }}" target="_blank" style="text-decoration: underline; cursor: pointer; color: inherit;">Зарегистрируйтесь</a>, чтобы сохранить результаты теста
                 </div>
             </div>
-
+        {% endif %}
         <form method="POST">
             <div class="my-3">
                 <div class="subtext2"><span>1. </span>Сумма задолженности</div>
@@ -42,7 +48,7 @@
                         <label class="lead2" for="qw1-6"> <span>Более 1 млн рублей</span></label>
                     </div>
                 </div>
-                <div class="subtext2"><span>2. </span>Если Вы отдадите часть долга, у вас не хватит средств для
+                <div class="subtext2"><span>2. </span>Если Вы отдадите часть долга, у вас хватит средств для
                     погашения других
                     долгов?
                 </div>
@@ -56,12 +62,6 @@
                         <label class="lead2" for="qw2-3"> <span>Нет</span></label>
                     </div>
                 </div>
-                <!--            <div class="subtext2">-->
-                <!--              <span>3. </span>Вы отвечаете признакам-->
-                <!--              <a href="#" class="tooltip-test tooltip-big" data-toggle="tooltip" data-placement="top" title="Неплатежеспособность - это...">неплатежеспособности</a>-->
-                <!--              или-->
-                <!--              <a href="#" class="tooltip-test" data-toggle="tooltip" data-placement="top" title="Недостаточность имущества - это...">недостаточности имущества</a>?-->
-                <!--            </div>-->
                 <div class="subtext2">
                     <span>3. </span>Вы отвечаете признакам
                     <span class="bankruptcy-tooltip" style="text-decoration: underline; cursor: pointer;">неплатежеспособности</span>
@@ -134,13 +134,18 @@
             <p><b><ins>Условия для подачи заявления о признании банкротом в МФЦ:</ins></b></p>
             <p>Вы можете подать заявление в МФЦ, если Вы соответствуете следующим критериям:</p>
             <ul>
-                <li>Если Вы являетесь гражданином с оконченным исполнительным производством:
+                <li>Если исполнительное производство по Вашим долгам окончено:
                     <ul>
-                        <li>Законченное исполнительное производство (принудительное взыскание долга) по причине
+                        <li><a href="https://www.consultant.ru/document/cons_doc_LAW_71450/105782f48579348026e763beef098430090826b6/#:~:text=4)%20%D0%B5%D1%81%D0%BB%D0%B8%20%D1%83,%D0%A4%D0%B5%D0%B4%D0%B5%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%BC%20%D0%B7%D0%B0%D0%BA%D0%BE%D0%BD%D0%BE%D0%BC%3B"
+								target="_blank"
+								style="
+									text-decoration: underline;
+									cursor: pointer;
+									color: inherit;
+									font-weight: 650;
+								">Закончено</a> исполнительное производство (принудительное взыскание долга) по причине
                             того, что у вас нет
-                            имущества, которым вы можете отвечать по долгам (п. 4 ч. 1 ст. 46 ФЗ № 229 “Об
-                            исполнительном
-                            производстве”).
+                            имущества, которым вы можете отвечать по долгам.
                         </li>
                         <li>И нет других текущих исполнительных производств.</li>
                     </ul>
@@ -160,13 +165,19 @@
                         <li>И у Вас нет имущества, которым Вы можете отвечать по долгам.</li>
                     </ul>
                 </li>
-                <li>К имуществу, которым Вы НЕ можете отвечать по долгам, относятся (ст. 446 ГПК РФ): единственное
+                <li>К имуществу, которым Вы НЕ можете отвечать по долгам, <a href="https://www.consultant.ru/document/cons_doc_LAW_39570/a67dde7f663104e7cffeff6d926f3a3e8ac36aa2/"
+								target="_blank"
+								style="
+									text-decoration: underline;
+									cursor: pointer;
+									color: inherit;
+									font-weight: 650;
+								">относятся</a>: единственное
                     жилье, в
-                    котором вы и ваша семья может постоянно проживать; земельные участки, на которых расположено
+                    котором Вы и Ваша семья может постоянно проживать; земельные участки, на которых расположено
                     такое жилье;
                     предметы домашнего обихода; вещи индивидуального пользования, КРОМЕ предметов роскоши и
-                    драгоценностей; и
-                    другие.
+                    драгоценностей и другие.
                 </li>
                 <li>Если Вы являетесь опекуном или родителем несовершеннолетних детей:
                     <ul>
@@ -177,9 +188,15 @@
                             выдачи и до
                             подачи заявления на банкротство должен пройти ОДИН год минимум).
                         </li>
-                        <li>И у Вас нет имущества, которым Вы можете отвечать по долгам (сделать отсылку к условиям
-                            из ст. 446
-                            ГПК).
+                        <li>И у Вас нет имущества, которым Вы можете <a 
+                            href="https://www.consultant.ru/document/cons_doc_LAW_39570/a67dde7f663104e7cffeff6d926f3a3e8ac36aa2/"
+                            target="_blank"
+                            style="
+                                text-decoration: underline;
+                                cursor: pointer;
+                                color: inherit;
+                                font-weight: 650;
+								">отвечать по долгам</a>.
                         </li>
                     </ul>
                 </li>

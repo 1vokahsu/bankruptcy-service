@@ -9,28 +9,41 @@
 <div class="container">
     {% if 'email' in session %}
     {% if user_data %}
-        {% for data in user_data %}
-        <div class="card mb-3">
-            <div class="card-header">
-                <strong>Дата прохождения анкеты:</strong> {{ data.time }}
-            </div>
-            <div class="card-body">
-                <strong class="card-title">Ваши ответы:</strong>
-                <ul>
-                    <li>Сумма задолженности: {{ data.questions['Сумма задолженности'] }}</li>
-                    <li>Если Вы отдадите часть долга, у вас не хватит средств для погашения других долгов? {{ data.questions['Удовлетворяет'] }}</li>
-                    <li>Вы отвечаете признакам неплатежеспособности или недостаточности имущества? {{ data.questions['Вы отвечаете'] }}</li>
-                    <li>Соответствуете ли Вы хотя бы одному из данных критериев? {{ data.questions['Соответствуете'] }}</li>
-                </ul>
-                <p class="card-text"><strong>Результат анкеты:</strong> {{ data.result }}</p>
-            </div>
+    {% for data in user_data %}
+    <div class="card mb-3">
+        <div class="card-header">
+            <strong>Дата прохождения анкеты:</strong> {{ data.time }}
         </div>
-        {% endfor %}
+        <div class="card-body">
+            <strong class="card-title">Ваши ответы:</strong>
+            <ul>
+                <li>Сумма задолженности: {{ data.questions['Сумма задолженности'] }}</li>
+                <li>Если Вы отдадите часть долга, у вас не хватит средств для погашения других долгов? {{
+                    data.questions['Удовлетворяет'] }}
+                </li>
+                <li>Вы отвечаете признакам неплатежеспособности или недостаточности имущества? {{ data.questions['Вы
+                    отвечаете'] }}
+                </li>
+                <li>Соответствуете ли Вы хотя бы одному из данных критериев? {{ data.questions['Соответствуете'] }}</li>
+            </ul>
+            <p class="card-text"><strong>Результат анкеты:</strong> {{ data.result }}</p>
+            <button class="btn btn-success btn-sm" onclick="location.href='{{ url_for('results', result=data.result_id) }}'">Подробнее</button>
+        </div>
+    </div>
+    {% endfor %}
     {% else %}
-        <p>Анкета еще не была пройдена.</p>
+    <h3 class="my-3 text-center">Анкета еще не была пройдена.</h3>
+    <a href="{{ url_for('vote') }}" target="_blank" class="btn-custom">Пройдите тест из 4 вопросов, чтобы узнать Вашу
+    ситуацию</a>
     {% endif %}
-{% else %}
-    <p>Чтобы просматривать историю прохождения анкеты, <a href="{{ url_for('login') }}">необходимо войти в систему</a>!</p>
-{% endif %}
+    {% else %}
+    <p>Чтобы просматривать историю прохождения анкеты, <a href="{{ url_for('login') }}" style="
+									text-decoration: underline;
+									cursor: pointer;
+									color: inherit;
+									font-weight: 650;
+								">необходимо войти в систему</a>!
+    </p>
+    {% endif %}
 </div>
 {% endblock %}

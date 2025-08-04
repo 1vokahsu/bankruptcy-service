@@ -11,13 +11,15 @@
 }
 
 
+
 .navbar-nav .nav-item.active {
-    background-color: #f8f9fa;
+    background-color: #e9ecef;
+    border-radius: 9px;
 }
 
-/* Highlight on hover */
 .navbar-nav .nav-item:hover {
     background-color: #e9ecef;
+    border-radius: 9px;
 }
 
 
@@ -90,7 +92,7 @@ html, body{
     font-size: 1.8em;
     color: #555;
     text-align: center;
-    margin-bottom: 0.5em;
+    margin-bottom: 1em;
 }
 
 .lead2 {
@@ -104,7 +106,7 @@ html, body{
     font-size: 1.4em;
     color: #777;
     text-align: center;
-    margin-bottom: 0.5em;
+    margin-bottom: 0em;
 }
 
 .reference {
@@ -147,14 +149,93 @@ html, body{
 .tooltips {
   flex: 1;
   position: relative;
+  margin-left: 2em;
 }
 
-.tooltip-text {
-  display: none;
-  position: absolute;
-  width: 100%;
+.tooltip-text
+{
+    display: none;
 }
+
+
 
 .show-tooltip {
   display: block;
+}
+
+
+
+.collapsible-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.collapsible-title {
+    background-color: #fff;
+    color: #444;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+}
+
+.collapsible-icon {
+    margin-left: auto;
+    font-size: 20px;
+    padding-right: 10px;
+}
+
+.hint-content {
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+    background-color: #f1f1f1;
+    border-radius: 10px;
+}
+
+/* Authorization */
+
+.bg-light3 {
+  background-color: #ffffffe0;
+  border: 1px solid #ccc;
+}
+
+.rounded-custom {
+  border-radius: 10px;
+}
+
+.form-control {
+  border-radius: 10px;
+  font-size: 1.4em;
+}
+
+.form-control::placeholder {
+  color: #888;
+}
+
+.text-grey {
+  color: grey;
+  margin-bottom: 0;
+}
+
+.text-black {
+  color: black;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.hr-grey {
+  border: 0;
+  border-top: 1px solid grey;
+  width: 50%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.text-red {
+  color: red;
+  text-decoration: none;
 }

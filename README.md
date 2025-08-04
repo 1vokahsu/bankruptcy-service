@@ -21,17 +21,57 @@ and consequences.
 
 ```tree
 .
-.
-├── LICENSE
-├── main.py
 ├── README.md
-└── requirements.txt
+├── app
+│   ├── Dockerfile
+│   ├── config.py
+│   ├── main.py
+│   ├── requirements.txt
+│   ├── static
+│   │   ├── css
+│   │   │   └── main.css
+│   │   └── js
+│   │       └── main.js
+│   └── templates
+│       ├── account.html
+│       ├── base.html
+│       ├── history.html
+│       ├── img
+│       │   ├── calendar.png
+│       │   └── calendar.svg
+│       ├── index.html
+│       ├── login.html
+│       ├── register.html
+│       ├── results.html
+│       └── test.html
+├── docker-compose.dev.yml
+├── nginx
+│   ├── Dockerfile
+│   └── nginx.conf
+└── pg_db
 ```
 
 ## Usage
+- Download `docker` and `docker-compose`
+- Run app or system daemon `docker`
+- Go to the folder `/project_kplus`
+- If you have never created images or lifted containers yet, run these commands in the terminal, located in the `/project_kplus` folder
+  ```bash
+  docker-compose -f docker-compose.dev.yml build
+  docker-compose -f docker-compose.dev.yml up
+  ```
+- After doing the above in the new terminal, do this
+  ```bash
+  docker exec bankruptcy_app flask --app main create_db
+  ```
+- To go to the site in the browser, enter `http://localhost:80` or `http://127.0.0.1:80`
+- If you changed/added/deleted something, run these commands in the terminal, located in the `/project_kplus` folder
+  ```bash
+  docker-compose -f docker-compose.dev.yml up --build
+  ```
+- If you want to stop everything, press `Ctrl+C`
 
-- Run this command:
-  `pytest main.py`
+
 
 ## Contributing
 
@@ -40,3 +80,6 @@ Contributions to the Project_kplus are welcome! Whether it's feature requests, b
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Project participants
+[![GitHub](https://img.shields.io/badge/-galyeonh-333?style=for-the-badge&logo=GitHub&logoColor=fff)](https://gitlab.com/galyeonh)

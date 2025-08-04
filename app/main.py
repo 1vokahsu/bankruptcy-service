@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request, redirect, Blueprint
+from flask import Flask, render_template, url_for, request, redirect, Blueprint, send_from_directory
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import func
 from sqlalchemy.dialects.postgresql import JSONB
@@ -12,10 +12,6 @@ app = Flask(__name__, )
 app.config['SQLALCHEMY_DATABASE_URI'] = config.DATABASE_URL
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
-
-# bp = Blueprint('commands', __name__)
-
-# app.register_blueprint(bp)
 
 app.secret_key = os.urandom(24)
 
@@ -47,20 +43,22 @@ class UsersData(db.Model):
     result = db.Column(db.Text, nullable=True)
     time_create = db.Column(db.DateTime(timezone=True),
                             server_default=func.now())
+    result_id = db.Column(db.Integer, nullable=False)
 
     def __repr__(self) -> str:
         return '<Article %r>' % self.id
 
 
-with app.app_context():
-    # db.drop_all()
-    db.create_all()
+# local dev
+# with app.app_context():
+#     # db.drop_all()
+#     db.create_all()
     
     
 @app.cli.command("create_db")
 def create_db():
     with app.app_context():
-        # db.drop_all()
+        db.drop_all()
         db.create_all()
 
 
@@ -70,41 +68,41 @@ def get_result(form: dict) -> dict:
         0: "",
         1: -1
     }
-    if ((form["Сумма задолженности"] == "От 25 до 500 тысяч рублей" or form["Сумма задолженности"] == "Менее 25 тысяч рублей") and form["Удовлетворяет"] == "Да") or (
+    if (((form["Сумма задолженности"] == "От 25 до 500 тысяч рублей" and form["Соответствуете"] == "Нет" and form["Вы отвечаете"] == "Нет") or form["Сумма задолженности"] == "Менее 25 тысяч рублей") and form["Удовлетворяет"] == "Да") or (
         (form["Сумма задолженности"] == "Менее 25 тысяч рублей" or form["Сумма задолженности"] == "Более 1 млн рублей"
          or (form["Сумма задолженности"] == "От 500 тысяч до 1 млн рублей" and form["Соответствуете"] == "Нет"))
-        and (form["Удовлетворяет"] == "Нет" and form["Вы отвечаете"] == "Да")
+        and (form["Удовлетворяет"] == "Да" and form["Вы отвечаете"] == "Да")
     ):
         result[0] = "Вы ВПРАВЕ обратиться только в СУД с заявлением о признании банкротом (при доказательстве НЕПЛАТЕЖЕСПОСОБНОСТИ и НЕДОСТАТОЧНОСТИ имущества)"
         result[1] = 0
         return result
-    elif ((form["Сумма задолженности"] == "От 25 до 500 тысяч рублей" or form["Сумма задолженности"] == "Более 1 млн рублей"
+    elif ((form["Сумма задолженности"] == "От 25 до 500 тысяч рублей"
            or (form["Сумма задолженности"] == "От 500 тысяч до 1 млн рублей"
-               and form["Соответствуете"] == "Нет"))
-          and form["Удовлетворяет"] == "Нет" and form["Вы отвечаете"] == "Нет"
+               and form["Соответствуете"] == "Да"))
+          and form["Удовлетворяет"] == "Да" and form["Вы отвечаете"] == "Нет"
           ):
-        result[
-            0] = "Вы можете подать заявление в суд, но, скорее всего, Вам откажут в удовлетворении требований.\nВы можете претендовать на банкротство в судебном порядке только при доказательстве НЕПЛАТЕЖЕСПОСОБНОСТИ и НЕДОСТАТОЧНОСТИ имущ-ва.\nВы имеет право обратиться в МФЦ при соблюдении УСЛОВИЙ (ст. 223.2)"
+        result[0] = "Вы можете подать заявление в суд, но, скорее всего, Вам откажут в удовлетворении требований.\nТакже Вы имеет право обратиться в МФЦ при соблюдении условий.\nВы можете претендовать на банкротство в судебном порядке только при доказательстве НЕПЛАТЕЖЕСПОСОБНОСТИ и НЕДОСТАТОЧНОСТИ имущества."
         result[1] = 1
         return result
-    elif (form["Сумма задолженности"] == "От 25 до 500 тысяч рублей" or (
-            form["Сумма задолженности"] == "От 500 тысяч до 1 млн рублей" and form["Соответствуете"] == "Да")
-          and (form["Удовлетворяет"] == "Нет" and form["Вы отвечаете"] == "Да")
+    elif (form["Сумма задолженности"] == "От 25 до 500 тысяч рублей" or 
+            (form["Сумма задолженности"] == "От 500 тысяч до 1 млн рублей" and form["Соответствуете"] == "Да"
+          and form["Удовлетворяет"] == "Да") and form["Вы отвечаете"] == "Да"
           ):
-        result[0] = "Вы имеете ПРАВО обратиться либо в СУД, либо в МФЦ, по Вашему усмотрению (для МФЦ - дописать дополнительные для этого условия иЗ Ст. 223.2)"
+        result[0] = "Вы имеете ПРАВО обратиться либо в СУД, либо в МФЦ, по Вашему усмотрению"
         result[1] = 2
         return result
-    elif (form["Сумма задолженности"] == "Менее 25 тысяч рублей" or form["Сумма задолженности"] == "Более 1 млн рублей"
-          and (form["Удовлетворяет"] == "Нет" and form["Вы отвечаете"] == "Нет")
+    elif ((form["Сумма задолженности"] == "Менее 25 тысяч рублей" or form["Сумма задолженности"] == "Более 1 млн рублей"
+          or (form["Сумма задолженности"] == "От 500 тысяч до 1 млн рублей" and form["Соответствуете"] == "Нет"))
+          and form["Удовлетворяет"] == "Да" and form["Вы отвечаете"] == "Нет"
           ):
         result[0] = "Вы можете подать заявление в СУД, но, скорее всего, Вам откажут в удовлетворении требований.\nВы можете претендовать на банкротство в судебном порядке только при доказательстве НЕПЛАТЕЖЕСПОСОБНОСТИ и НЕДОСТАТОЧНОСТИ имущества"
         result[1] = 3
         return result
     elif (form["Сумма задолженности"] == "Более 1 млн рублей"
-          or (form["Сумма задолженности"] == "От 500 тысяч до 1 млн рублей")
-          and (form["Удовлетворяет"] == "Да")
+          or form["Сумма задолженности"] == "От 500 тысяч до 1 млн рублей"
+          and form["Удовлетворяет"] == "Нет"
           ):
-        result[0] = "Вы ОБЯЗАНЫ обратиться в СУД с заявлением о признании банкротом.\nУ Вас есть на это 30 дней"
+        result[0] = "Вы ОБЯЗАНЫ обратиться в СУД.\nУ Вас есть на это 30 дней"
         result[1] = 4
         return result
 
@@ -135,7 +133,7 @@ def vote():
             try:
                 user = Users.query.filter_by(email=session['email']).first()
                 user_data = UsersData(user_id=user.id, form=json.dumps(
-                    form, ensure_ascii=False), result=result[0])
+                    form, ensure_ascii=False), result=result[0], result_id=result[1])
                 db.session.add(user_data)
                 db.session.commit()
                 return render_template("results.html", result=result[1])
@@ -143,8 +141,9 @@ def vote():
                 print(ex)
                 return "При заполнении анкеты произошла ошибка"
         return render_template("results.html", result=result[1])
-
-    return render_template("test.html")
+    if 'email' not in session:
+        return render_template("test.html", login=1)
+    return render_template("test.html", login=0)
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -225,18 +224,72 @@ def history():
                     'Вы отвечаете': form_data['Вы отвечаете'],
                     'Соответствуете': form_data['Соответствуете']
                 },
-                'result': data.result
+                'result': data.result,
+                'result_id': data.result_id
             })
         return render_template('history.html', user_data=history_data)
     return render_template('history.html', message='Чтобы просматривать историю прохождения анкеты, необходимо войти в систему!')
 
 
+@app.route('/results')
+def results():
+    result_id = request.args.get('result', default=0, type=int)
+    return render_template('results.html', result=result_id)
+
+
+@app.route('/edit_account', methods=['GET', 'POST'])
+def edit_account():
+    if 'email' in session:
+        user = Users.query.filter_by(email=session['email']).first()
+        if request.method == 'POST':
+            name = request.form['name']
+            surname = request.form['surname']
+            age = request.form['age']
+
+            user.form_personal_data = json.dumps({
+                'name': name,
+                'surname': surname,
+                'age': age
+            }, ensure_ascii=False)
+            db.session.commit()
+
+            return redirect(url_for('account'))
+        user_personal_data = json.loads(user.form_personal_data)
+        user_personal_data['email'] = user.email
+        return render_template('edit_account.html', user_personal_data=user_personal_data)
+    return redirect(url_for('login'))
+
+
 @app.route('/logout')
 def logout():
     session.pop('email', None)
-    return redirect(url_for('get_index'))
+    return redirect(url_for('login'))
 
+
+@app.route('/articles')
+def articles():
+    return render_template('articles.html')
+
+
+@app.route('/articles/<int:id>')
+def article(id):
+    return render_template('article_detail.html', id=id)
+
+
+@app.route('/documents/<int:id>')
+def documents(id):
+    return render_template('documents.html', id=id)
+
+
+@app.route('/download/<filename>')
+def download_file(filename):
+    return send_from_directory('static/docs', filename)
 
 if __name__ == "__main__":
     app.run(debug=True)
-# host = "0.0.0.0"
+
+# if __name__ == "__main__":
+#     with app.app_context():
+#             db.drop_all()
+#             # db.create_all()
+#     app.run(debug=True)

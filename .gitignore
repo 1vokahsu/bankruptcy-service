@@ -1,0 +1,7 @@
+/app/venv
+/app/.DS_Store
+/app/__pycache__
+/app/.DS_Store
+/app/.env
+.DS_Store
+/pg_db

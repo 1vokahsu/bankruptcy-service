@@ -1,142 +1,506 @@
 {% extends 'base.html' %} {% block title %} Результат {% endblock %} {% block
 body %}
 <div class="container text-center mt-5">
-	<h4 class="display-5 fw-bold">Результат</h4>
+    <h4 class="display-5 fw-bold">Результат</h4>
 </div>
 {% if result == 0 %}
 <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
-	<h6 class="text-left display-6 fw-6">
-		Вы <strong>ВПРАВЕ</strong> обратиться
+    <h6 class="text-left display-6 fw-6">
+        Вы <strong>ВПРАВЕ</strong> обратиться
         с <strong>заявлением</strong> о признании банкротом
-        только в <strong>СУД
-	</h6>
-	<h5 class="text-left display subtext2 fw-9">
-		(при доказательстве НЕПЛАТЕЖЕСПОСОБНОСТИ и НЕДОСТАТОЧНОСТИ имущества)
-	</h5>
+        только в <strong>СУД</strong>
+    </h6>
+    <h5 class="text-left display subtext2 fw-9">
+        (при доказательстве 
+		<a href="/articles/3#:~:text=Когда%20гражданин%20вправе%20обратиться%20в%20суд%20для%20признания%20его%20банкротом%3F" target="_blank" style="text-decoration: underline; cursor: pointer; color: inherit; font-weight: 650;">неплатежеспособности</a> 
+		и 
+		<a href="/articles/3#:~:text=Когда%20гражданин%20вправе%20обратиться%20в%20суд%20для%20признания%20его%20банкротом%3F" target="_blank" style="text-decoration: underline; cursor: pointer; color: inherit; font-weight: 650;">недостаточности</a> 
+		имущества)
+    </h5>
 </div>
+<a href="{{ url_for('download_file', filename='Заявление о банкротстве ФЛ в суд + приложения.docx') }}" class="btn-custom">Скачать заявление о признании гражданина банкротом в суд</a>
+
 {% elif result == 1 %}
 <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
-	<h6 class="text-left display-6 fw-6">
-		Вы <strong>можете</strong> подать заявление в <strong>СУД</strong>, но,
-		скорее всего, Вам <strong>откажут</strong> в удовлетворении требований.
-	</h6>
-	<h5 class="text-left display-6 fw-6">
-		Также Вы имеет право обратиться в МФЦ при соблюдении
-		<a
+    <h6 class="text-left display-6 fw-6">
+        Вы <strong>можете</strong> подать заявление в <strong>СУД</strong>, но,
+        скорее всего, Вам <strong>откажут</strong> в удовлетворении требований.
+    </h6>
+    <h5 class="text-left display-6 fw-6">
+        Также Вы имеет право обратиться в МФЦ при соблюдении
+        <a
 			href="https://www.consultant.ru/document/cons_doc_LAW_39331/c48290d39215783e73f0899bb1026b14cb221eff/"
-			>условий</a
-		>.
-	</h5>
-	<h5 class="text-left display-6 subtext2 fw-9">
-		Вы можете претендовать на банкротство в судебном порядке только при
-		доказательстве НЕПЛАТЕЖЕСПОСОБНОСТИ и НЕДОСТАТОЧНОСТИ имущества.
-	</h5>
+			target="_blank"
+			style="
+			text-decoration: underline;
+			cursor: pointer;
+			color: inherit;
+			font-weight: 650;">
+				условий
+		</a>.
+    </h5>
+    <h5 class="text-left display-6 subtext2 fw-9">
+        Вы можете претендовать на банкротство в судебном порядке только при
+        доказательстве 
+		<a href="/articles/3#:~:text=Когда%20гражданин%20вправе%20обратиться%20в%20суд%20для%20признания%20его%20банкротом%3F" target="_blank" style="text-decoration: underline; cursor: pointer; color: inherit; font-weight: 650;">неплатежеспособности</a> 
+		и 
+		<a href="/articles/3#:~:text=Когда%20гражданин%20вправе%20обратиться%20в%20суд%20для%20признания%20его%20банкротом%3F" target="_blank" style="text-decoration: underline; cursor: pointer; color: inherit; font-weight: 650;">недостаточности</a> 
+		имущества.
+    </h5>
 </div>
+<a href="{{ url_for('download_file', filename='Заявление о банкротстве ФЛ в суд + приложения.docx') }}" class="btn-custom">Скачать заявление о признании гражданина банкротом в суд</a>
+<a href="{{ url_for('download_file', filename='Заявление о признании гражданина банкротом в МФЦ.docx') }}" class="btn-custom">Скачать заявление о признании гражданина банкротом в МФЦ</a>
+<a href="/articles/2" target="_blank" class="btn-custom">Подробнее о процедуре банкротства через МФЦ читайте в нашей статье</a>
 {% elif result == 2 %}
 <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
-	<h6 class="text-left display-6 fw-6">
-		Вы <strong>имеете</strong> ПРАВО обратиться либо в <strong>СУД</strong>,
-		либо в <strong>МФЦ</strong>,
-	</h6>
-	<h5 class="text-left display-6 fw-6">
-		по Вашему усмотрению.
-	</h5>
-	<h5 class="text-left display-6 subtext fw-6">
-		(для МФЦ - дописать дополнительные для этого условия из Ст. 223.2)
-	</h5>
+    <h6 class="text-left display-6 fw-6">
+        Вы <strong>имеете</strong> ПРАВО обратиться либо в <strong>СУД</strong>,
+        либо в <strong>МФЦ</strong>,
+    </h6>
+    <h5 class="text-left display-6 fw-6">
+        по Вашему усмотрению.
+    </h5>
 </div>
+<a href="{{ url_for('download_file', filename='Заявление о банкротстве ФЛ в суд + приложения.docx') }}" class="btn-custom">Скачать заявление о признании гражданина банкротом в суд</a>
+<a href="{{ url_for('download_file', filename='Заявление о признании гражданина банкротом в МФЦ.docx') }}" class="btn-custom">Скачать заявление о признании гражданина банкротом в МФЦ</a>
+<a href="/articles/2" target="_blank" class="btn-custom">Подробнее о процедуре банкротства через МФЦ читайте в нашей статье</a>
 {% elif result == 3 %}
 <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
-	<h6 class="text-left display-6 fw-6">
-		Вы <strong>можете</strong> подать заявление в <strong>СУД</strong>, но,
-		скорее всего, Вам <strong>откажут</strong> в удовлетворении требований.
-	</h6>
-	<h5 class="text-left display-6 subtext2 fw-9">
-		Вы можете претендовать на банкротство в судебном порядке только при
-		доказательстве НЕПЛАТЕЖЕСПОСОБНОСТИ и НЕДОСТАТОЧНОСТИ имущества.
-	</h5>
+    <h6 class="text-left display-6 fw-6">
+        Вы <strong>можете</strong> подать заявление в <strong>СУД</strong>, но,
+        скорее всего, Вам <strong>откажут</strong> в удовлетворении требований.
+    </h6>
+    <h5 class="text-left display-6 subtext2 fw-9">
+        Вы можете претендовать на банкротство в судебном порядке только при
+        доказательстве 
+		<a href="/articles/3#:~:text=Когда%20гражданин%20вправе%20обратиться%20в%20суд%20для%20признания%20его%20банкротом%3F" target="_blank" style="text-decoration: underline; cursor: pointer; color: inherit; font-weight: 650;">неплатежеспособности</a> 
+		и 
+		<a href="/articles/3#:~:text=Когда%20гражданин%20вправе%20обратиться%20в%20суд%20для%20признания%20его%20банкротом%3F" target="_blank" style="text-decoration: underline; cursor: pointer; color: inherit; font-weight: 650;">недостаточности</a> 
+		имущества.
+    </h5>
 </div>
+<a href="{{ url_for('download_file', filename='Заявление о банкротстве ФЛ в суд + приложения.docx') }}" class="btn-custom">Скачать заявление о признании гражданина банкротом в суд</a>
 {% elif result == 4 %}
 <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
-	<h6 class="text-left display-6 fw-6">
-		Вы <strong>ОБЯЗАНЫ</strong> обратиться в <strong>СУД</strong>.
-	</h6>
-	<h6 class="text-left display-6 fw-6">
-		У Вас есть на это <strong>30 дней</strong>
-	</h6>
+    <h6 class="text-left display-6 fw-6">
+        Вы <strong>ОБЯЗАНЫ</strong> обратиться в <strong>СУД</strong>.
+    </h6>
+    <h6 class="text-left display-6 fw-6">
+        У Вас есть на это <strong>30 дней</strong>
+    </h6>
 </div>
-<div class="mx-auto my-4">
-	<h5 class="text-center display-9 fw-bold">
-		С какого момента следует считать 30 дней, предоставляемых для обращения в суд, если Вы обязаны обратиться в суд?
-	</h5>
-	<h5 class="text-left">
-		По
-		<a
-			href="https://www.consultant.ru/document/cons_doc_LAW_39331/c2c8c81ee8e4bd843286b08b10607f00ec6ae073/"
-			>закону</a
-		>
-		Гражданин обязан обратиться в арбитражный суд с заявлением о признании его банкротом не позднее 30 рабочих дней со дня, 
-        когда он узнал или должен был узнать о том, что выплата долга одному гражданину (организации) повлечет невозможность выплаты второму. 
-        При этом общий долг превышает 500 тысяч рублей
-	</h5>
-	<h5 class="text-left">
-		ОБРАТИТЕ ВНИМАНИЕ! 
-        Считаются только <strong>рабочие</strong> дни, куда не входят выходные (суббота и воскресенье) и нерабочие праздничные дни. 
-        Учитывайте это при расчете срока.
-	</h5>
-	<h5 class="text-left">
-		Течение срока начинается на следующий день после календарной даты или наступления события, которыми определено начало этого срока. 
-        То есть, если Вы узнали или должны были узнать об обязанности обратиться в суд с заявлением о банкротстве 27 марта, 
-        то 30-дневный срок начинает течь с 28 марта. Таким образом, крайний рабочий день для подачи заявления в суд – 14 мая (см. календарь ниже).
-	</h5>
-    <div class="py-5 text-center">
-      <img  src="img/calendar.png" class="d-block mx-auto mb-4" alt="calendar" width="512" height="404" />
+<a href="{{ url_for('download_file', filename='Заявление о банкротстве ФЛ в суд + приложения.docx') }}" class="btn-custom">Скачать заявление о признании гражданина банкротом в суд</a>
+<div class="collapsible-container">
+    <span class="collapsible-title"><span class="subtext2" style="font-size: 1.5em; font-weight: bold;">С какого момента следует считать 30 дней, предоставляемых для обращения в суд, если Вы обязаны обратиться в суд?</span></span>
+    <span class="collapsible-icon"><span class="subtext2" style="font-weight: bold;">+</span></span>
+</div>
+
+<div class="hint-content">
+    <div class="subtext2">
+
+        <ul>
+            <li>
+                По <a
+                    href="https://www.consultant.ru/document/cons_doc_LAW_39331/c2c8c81ee8e4bd843286b08b10607f00ec6ae073/"
+                    target="_blank"
+                    style="
+									text-decoration: underline;
+									cursor: pointer;
+									color: inherit;
+									font-weight: 650;
+								">закону</a>
+                Гражданин обязан обратиться в арбитражный суд с заявлением о признании его банкротом не позднее 30
+                рабочих дней со дня,
+                когда он узнал или должен был узнать о том, что выплата долга одному гражданину (организации) повлечет
+                невозможность выплаты второму.
+            </li>
+            <li>При этом общий долг превышает 500 тысяч рублей</li>
+            <p
+						style="
+							border: 1px solid #444444;
+							border-radius: 8px;
+							text-align: center;
+							margin-top: 10px;
+							margin-bottom: 10px;
+						"
+					>
+					<strong>ОБРАТИТЕ ВНИМАНИЕ!</strong>
+					Считаются только <strong>рабочие</strong> дни, куда не входят выходные
+					(суббота и воскресенье) и нерабочие праздничные дни. Учитывайте это при
+					расчете срока.
+			</p>
+            <li>
+                Течение срока начинается на следующий день после календарной даты или наступления события, которыми
+                определено начало этого срока.
+                То есть, если Вы узнали или должны были узнать об обязанности обратиться в суд с заявлением о
+                банкротстве 27 марта,
+                то 30-дневный срок начинает течь с 28 марта. Таким образом, крайний рабочий день для подачи заявления в
+                суд – 14 мая (см. календарь ниже).
+            </li>
+            <img src="{{ url_for('static', filename='img/calendar.png')}}" class="d-block mx-auto mb-4" alt="calendar"
+                 width="512" height="404"/>
+            <li>
+                С расчетом Вам поможет специальный сервис
+                <a href="https://calc.consultant.ru/days" target="_blank"
+                   style="
+									text-decoration: underline;
+									cursor: pointer;
+									color: inherit;
+									font-weight: 650;
+								" class="link">«Калькулятор»</a>
+				<ul>
+					<li>
+						Для подсчета Вам необходимо:
+						<ol>
+							<li>Перейти по ссылке на сервис выше</li>
+							<li>Выбрать раздел «Конечная дата»</li>
+							<li>Вписать в первое окошко день, с которого начинается отсчёт 30-дневного срока (о том, как
+								определить этот день, читайте вопрос
+								«Как проверяется исчисление 30-дневного срока?» ниже)
+							</li>
+							<li>В самом правом прямоугольнике замените «календарные дни» на «рабочие дни»</li>
+							<li>В прямоугольник слева от «рабочих дней» впишите 30</li>
+							<li>Уберите галочку с пункта «Включать начальную дату»</li>
+							
+						</ol>
+						<img
+						src="{{ url_for('static', filename='img/calculator_interval.png')}}"
+						class="d-block mx-auto mb-4"
+						alt="calendar"
+						width="512"
+						height="404"
+						/>
+						Результат выглядит так:
+						<img
+						src="{{ url_for('static', filename='img/calculator_date.png')}}"
+						class="d-block mx-auto mb-4"
+						alt="calendar"
+						width="512"
+						height="404"
+						/>
+					</li>
+				</ul>
+			</li>
+		</ul>
+
     </div>
-	<h5 class="text-left">
-        С расчетом Вам поможет специальный сервис 
-		<a
-			href="https://calc.consultant.ru/days"
-			class="link"
-			>«Калькулятор»</a
-		>
-	</h5>
 </div>
-<div class="mx-auto my-4">
-	<h5 class="text-center display-9 fw-bold">
-		Что будет, если не выполнить обязанность и не подать заявление в суд в течение 30 дней?
-	</h5>
-	<h5 class="text-left">
-		За неисполнение гражданином обязанности по подаче заявления о признании его банкротом в арбитражный суд предусмотрена административная ответственность: 
-        налоговые органы имеют право наложить административный штраф в размере от 1000 до 3000 рублей. 
-        Если Вы решите повторно не подать заявление в суд, есть риск получить ещё один штраф – от 3000 до 5000 рублей.
-	</h5>
+
+<div class="collapsible-container">
+	<span class="collapsible-title"
+		><span class="subtext2" style="font-size: 1.5em; font-weight: bold"
+			>Как проверяется исчисление 30-дневного срока?</span
+		></span
+	>
+	<span class="collapsible-icon"
+		><span class="subtext2" style="font-weight: bold">+</span></span
+	>
+</div>
+<div class="hint-content">
+	<div class="subtext2">
+		<ul>
+		<li>
+			Закон предполагает, что гражданин должен сам отслеживать состояние 
+			своих текущих долгов и самостоятельно в предусмотренный договором срок 
+			предпринимать меры по их погашению. Поэтому узнать о возникновении обязанности он сможет:
+			<ul>
+				<li>из договоров и иной документации, на основании которых возник долг</li>
+				<li>из решений суда и исполнительных документов о взыскании долга</li>
+			</ul>
+			Перечисленные документы будут фигурировать и в банкротном деле. Соответственно, на их 
+			основании кредиторы и финансовый управляющий могут установить факт нарушения обязанности 
+			по подаче заявления на банкротство.
+		</li>
+		<p
+					style="
+						border: 1px solid #444444;
+						border-radius: 8px;
+						text-align: center;
+						margin-top: 10px;
+					"
+				>
+				Таким образом, гражданин самостоятельно должен отсчитать 3 месяца с момента, 
+				когда он должен был вернуть долг, но так его и не вернул. На следующий день 
+				после наступления 3-месячного срока неоплаты долга начинает течь 30-дневный срок, 
+				в который гражданин обязан обратиться с заявлением в суд
+		</p>
+		</ul>
+	</div>
+</div>
+
+<div class="collapsible-container">
+    <span class="collapsible-title"><span class="subtext2" style="font-size: 1.5em; font-weight: bold;">Что будет, если не выполнить обязанность и не подать заявление в суд в течение 30 дней?</span></span>
+    <span class="collapsible-icon"><span class="subtext2" style="font-weight: bold;">+</span></span>
+</div>
+<div class="hint-content">
+    <div class="subtext2">
+
+        <ul>
+            <li>
+                За неисполнение гражданином обязанности по подаче заявления о признании его банкротом в арбитражный суд
+                предусмотрена административная ответственность:
+                налоговые органы имеют право наложить административный штраф в размере от 1000 до 3000 рублей.
+            </li>
+            <li>Если Вы решите повторно не подать заявление в суд, есть риск получить ещё один штраф – от 3000 до 5000
+                рублей.
+            </li>
+        </ul>
+
+    </div>
+</div>
+
+{% elif result != 4 %}
+<div class="collapsible-container">
+	<span class="collapsible-title"
+		><span class="subtext2" style="font-size: 1.5em; font-weight: bold"
+			>Чем Вы рискуете, подавая заявление на банкротство?
+		</span></span
+	>
+	<span class="collapsible-icon"
+		><span class="subtext2" style="font-weight: bold">+</span></span
+	>
+</div>
+
+<div class="hint-content">
+	<div class="subtext2">
+		У процедуры банкротства есть как позитивные, так и негативные последствия.
+		<div class="collapsible-container" style="background-color: #f1f1f1; padding: 0px">
+			<ul>
+				<span class="collapsible-title" style="background-color: #f1f1f1; padding: 0px"><span class="subtext2" style="font-size: 1.5em; font-weight: bold">Что станет лучше?</span></span>
+			</ul>
+			<span class="collapsible-icon"><span class="subtext2" style="font-weight: bold">+</span></span>
+		</div>
+
+		<div class="hint-content">
+			<div class="subtext2" style="font-size: 1em">
+				<ul>
+					<li>Вы освободитесь от большей части своих долгов!</li>
+					<li>
+						Долги перестанут расти сразу после признания заявления о
+						банкротстве обоснованным.
+					</li>
+					<li>
+						Вы не останетесь совсем без имущества – жилое помещение, в котором
+						Вы зарегистрированы, вещи домашнего обихода, сумма денег не ниже
+						прожиточного минимума –
+						<a
+							href="https://www.consultant.ru/document/cons_doc_LAW_39570/a67dde7f663104e7cffeff6d926f3a3e8ac36aa2/"
+							target="_blank"
+							style="
+								text-decoration: underline;
+								cursor: pointer;
+								color: inherit;
+								font-weight: 650;
+							"
+							>все это</a
+						>
+						по праву Ваше.
+					</li>
+					<li>
+						Внесудебное банкротство бесплатно! Вам не придется платить даже
+						<a
+							href="/articles/4"
+							target="_blank"
+							style="
+								text-decoration: underline;
+								cursor: pointer;
+								color: inherit;
+								font-weight: 650;
+							"
+						>
+							госпошлину </a
+						>.
+					</li>
+					<li>
+						Вам больше не понадобится общаться с кредиторами, за Вас это
+						сделает
+						<a
+							href="/articles/5"
+							target="_blank"
+							style="
+								text-decoration: underline;
+								cursor: pointer;
+								color: inherit;
+								font-weight: 650;
+							"
+						>
+							финансовый управляющий</a
+						>. Он
+						же будет следить за соблюдением Ваших прав, ежемесячно выдавать
+						сумму в размере прожиточного минимума (в некоторых случаях – и
+						более, для жизненно необходимых трат, например, на оплату съёмного
+						жилья).
+					</li>
+					<li>
+						Если в отношении Вас уже ведутся судебные дела о задолженностях,
+						процедура банкротства
+						<a
+							href="https://www.consultant.ru/document/cons_doc_LAW_71450/7eaead837623e35ab0e8683b7fdd8d2c2a8de84c/"
+							target="_blank"
+							style="
+								text-decoration: underline;
+								cursor: pointer;
+								color: inherit;
+								font-weight: 650;
+							"
+							>объединит их в один процесс.</a
+						>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="collapsible-container" style="background-color: #f1f1f1; padding: 0px">
+			<ul>
+				<span class="collapsible-title" style="background-color: #f1f1f1; padding: 0px"><span class="subtext2" style="font-size: 1.5em; font-weight: bold">Какие есть негативные последствия?</span></span>
+			</ul>
+			<span class="collapsible-icon"><span class="subtext2" style="font-weight: bold">+</span></span>
+		</div>
+
+		<div class="hint-content">
+			<div class="subtext2" style="font-size: 1em">
+				<ul>
+					<li>
+						Банкротство не освободит Вас от определенных законом обязательств,
+						например, от уплаты алиментов, компенсации за причинение вреда.
+						Перечень небольшой, он установлен
+						<a
+							href="https://www.consultant.ru/document/cons_doc_LAW_39331/b919efeffaee7c5a42d9c3d755951599d9b55288/#:~:text=5.%20Требования%20кредиторов,законодательством%20Российской%20Федерации."
+							target="_blank"
+							style="
+								text-decoration: underline;
+								cursor: pointer;
+								color: inherit;
+								font-weight: 650;
+							"
+							>законом.
+						</a>
+					</li>
+					<li>
+						Для судебного банкротства понадобится
+						<a
+							href="/articles/5"
+							target="_blank"
+							style="
+								text-decoration: underline;
+								cursor: pointer;
+								color: inherit;
+								font-weight: 650;
+							"
+							>финансовый управляющий</a
+						>,
+						найти которого – Ваша задача.
+					</li>
+					<li>
+						Банкротство через суд окажется дорогостоящим – помимо публикаций в
+						СМИ и стандартных судебных расходов (<a
+							href="/articles/4"
+							target="_blank"
+							style="
+								text-decoration: underline;
+								cursor: pointer;
+								color: inherit;
+								font-weight: 650;
+							"
+							>госпошлина</a
+						>, выписки
+						из реестров, нотариальные услуги и т. д.), придется потратиться на
+						финансового управляющего: плата за услуги составит 25 000 рублей
+						за каждую процедуру, вознаграждение в размере 7% от суммы,
+						выплаченной кредитору при реструктуризации.
+					</li>
+					<li>
+						Банкротство отнимет немало времени – внесудебная процедура займет
+						около 6 месяцев, банкротство через суд – в среднем 1 год
+					</li>
+					<li>
+						Процедура банкротства – это тотальный контроль. Будут досконально
+						изучены все сделки, которые Вы осуществляли за год до принятия
+						заявления о признании банкротом, Вы сможете пользоваться своими
+						доходами только под руководством финансового управляющего. К
+						покупке и продаже какого-либо имущества потребуется проявить
+						повышенное внимание, чтобы сделка не вызывала
+						<a
+							href="https://www.consultant.ru/document/cons_doc_LAW_39331/05ccb2acde4b3196880ca82e2d7f4c1dfd5ea0b5/"
+							target="_blank"
+							style="
+								text-decoration: underline;
+								cursor: pointer;
+								color: inherit;
+								font-weight: 650;
+							"
+							>подозрений.</a
+						>
+					</li>
+					<li>На время банкротства суд может запретить выезд за границу</li>
+					<li>
+						В ближайшие 5 лет после банкротства у Вас не будет второго шанса
+						снова освободиться от долгов
+					</li>
+					<li>
+						Взять кредит в ближайшие 5 лет будет не так просто, как минимум
+						потребуется уведомить банк о своем банкротстве
+					</li>
+					<li>
+						Управлять кредитной организацией тоже нельзя – только через 10 лет
+						после завершения процедуры реализации имущества
+					</li>
+					<li>
+						Возможность управления различными финансовыми организациями
+						приостанавливается на 5 лет
+					</li>
+					<li>
+						Если Вы прекратили деятельность ИП и меньше чем через год подали
+						заявление о банкротстве во внесудебном порядке, то с новой
+						регистрацией ИП придется повременить в течение 5 лет
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
 </div>
 {% endif %}
-<div class="mx-auto my-4">
-	<h5 class="text-center display-9 fw-bold">
-		В какой суд нужно обращаться с заявлением о признании банкротом?
-	</h5>
-	<h5 class="text-left">
-		По
-		<a
-			href="https://www.consultant.ru/document/cons_doc_LAW_39331/3f616ffff8d276d135382906706bee367d5598ac/"
-			>закону</a
-		>
-		гражданин обращается с заявлением о банкротстве в арбитражный суд по месту
-		жительства – это арбитражный суд Вашего региона (области, республики, края,
-		автономной области, автономного округа, города федерального значения).
-	</h5>
-	<h5 class="text-left">
-		Местом жительства признается место Вашей постоянной регистрации на
-		территории Российской Федерации.
-	</h5>
-	<h5 class="text-left">
-		<a
-			href="https://www.consultant.ru/document/cons_doc_LAW_56549/28d4e27a078fee1402e6da89ff4e0c40edc09d62/"
-			class="link"
-			>Узнать</a
-		>
-		суд, его адрес, сайт и контактный телефон.
-	</h5>
+
+<div class="collapsible-container">
+    <span class="collapsible-title"><span class="subtext2" style="font-size: 1.5em; font-weight: bold;">В какой суд нужно обращаться с заявлением о признании банкротом?</span></span>
+    <span class="collapsible-icon"><span class="subtext2" style="font-weight: bold;">+</span></span>
 </div>
+<div class="hint-content">
+    <div class="subtext2">
+
+        <ul>
+            <li>
+                По <a
+                    href="https://www.consultant.ru/document/cons_doc_LAW_39331/3f616ffff8d276d135382906706bee367d5598ac/"
+                    target="_blank"
+                    style="
+									text-decoration: underline;
+									cursor: pointer;
+									color: inherit;
+									font-weight: 650;
+								">закону</a>
+                гражданин обращается с заявлением о банкротстве в арбитражный суд по месту
+                жительства – это арбитражный суд Вашего региона (области, республики, края,
+                автономной области, автономного округа, города федерального значения).
+            </li>
+            <li>Местом жительства признается место Вашей постоянной регистрации на территории Российской Федерации.</li>
+            <li>
+                <a href="https://www.consultant.ru/document/cons_doc_LAW_56549/28d4e27a078fee1402e6da89ff4e0c40edc09d62/"
+                   target="_blank"
+                   style="
+									text-decoration: underline;
+									cursor: pointer;
+									color: inherit;
+									font-weight: 650;
+								" class="link">Узнать</a> суд, его адрес, сайт и контактный телефон.
+            </li>
+			<li>
+				Подробнее о процедуре банкротства через суд читайте в нашей 
+				<a href="/articles/3" target="_blank" style="text-decoration: underline; cursor: pointer; color: inherit; font-weight: 650;" class="link">статье</a>
+			</li>
+        </ul>
+
+    </div>
+</div>
+
 {% endblock %}

@@ -5,18 +5,26 @@
 {% endblock %}
 
 {% block body %}
-<h1 class="my-3">Вход</h1>
 <div class="container">
-    <form method="POST">
-        <label>Email:</label>
-        <input type="email" name="email" required><br>
-        <label>Password:</label>
-        <input type="password" name="password" required><br>
-        <input type="submit" value="Войти">
-        <a href="{{ url_for('register') }}">Регистрация</a>
-    </form>
-    {% if message %}
-    <p>{{ message }}</p>
-    {% endif %}
+    <h2 class="my-3 text-center subtext2" style="color:black">Вход в систему</h2>
+    <div style="margin: 0 auto; max-width: 485px;">
+        <div class="bg-light3 p-4 mb-4 rounded-custom">
+            <form method="POST">
+                <div class="mb-3">
+                    <input type="email" class="form-control" id="email" name="email" required placeholder="Электронная почта">
+                </div>
+                <div class="mb-3">
+                    <input type="password" class="form-control" id="password" name="password" required placeholder="Пароль">
+                </div>
+                <div class="d-flex justify-content-between">
+                    <button type="submit" class="btn btn-success" style="width: 120px;">Вход</button>
+                    <a href="{{ url_for('register') }}" class="btn btn-light" style="width: 200px;">Создать аккаунт</a>
+                </div>
+            </form>
+            {% if message %}
+                <p style="margin-bottom: -5px; margin-top: 15px;">{{ message }}</p>
+            {% endif %}
+        </div>
+    </div>
 </div>
 {% endblock %}
