@@ -1,5 +1,5 @@
-![logo](app/static/img/logo.png)
-# Bankruptcy-service
+
+# Bankruptcy-service <img src="app/static/img/logo.png" width="100">
 
 A service for determining the possibility of bankruptcy of an individual, taking into account the risks
 and consequences.
